@@ -37,7 +37,7 @@ app.get("/getMovieName", async (req, res) => {
         }
         
         console.log("Result is ", result);
-        return res.json({movies});
+        return res.json({result});
     } catch (error) {
         return res.status(400).json({message: error});
     }

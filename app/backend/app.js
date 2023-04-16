@@ -5,6 +5,12 @@ const Router = require("./routes");
 const app = express();
 
 app.use(express.json());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 //MongoDB Compass => mongodb://localhost:27017/bollywood_movies
 
@@ -18,6 +24,6 @@ db.once("open", function () {
 
 app.use(Router);
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000!");
+app.listen(8000, () => {
+    console.log("Listening on port 8000!");
 })
