@@ -4,7 +4,9 @@ import './TextInput.css'
 function TextInput(props) {
 
   function handleInputChange(event){
-    props.onInputChange(event);
+    if (event.keyCode === 13){
+      props.onKeyPress(event);
+    }
   }
 
   // const [text, setText] = useState('');
@@ -15,12 +17,12 @@ function TextInput(props) {
   }, []);
 
   return (
-    <div>
-      <label htmlFor="textInput" id='lblInputText'>Guess a letter:</label>
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+      <label style={{paddingRight:'10px'}} htmlFor="textInput" id='lblInputText'>Guess a letter</label>
       <input
         id="txtInput"
         type="text"
-        onChange={handleInputChange}
+        onKeyDown={handleInputChange}
         maxLength={1}
         style={{ alignItems: 'center', justifyContent: 'center' }}
         ref={inputRef}

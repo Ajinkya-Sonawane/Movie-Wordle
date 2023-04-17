@@ -20,11 +20,11 @@ function Guess({flag,tries}) {
     ];
 
   const renderedGuess = boxes.map((box, index) => {
-          return <Box key={box.id} letter={box.letter} id={ "guess" + box.id} className={index > tries?"GuessBoxInitial":"GuessBoxFail"}/>
+          return <Box key={box.id} letter={box.id > tries.length? box.letter:tries[index]} id={ "guess" + box.id} className={box.id > tries.length ?"GuessBoxInitial":"GuessBoxFail"}/>
   });
 
   return (
-    <div>    
+    <div  className="AppComponents">    
         {
            renderedGuess
         }

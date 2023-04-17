@@ -17,12 +17,11 @@ function App() {
       setMovieName(data.result);
     }
     fetchData();
-  }, []);  
+  }, []);
 
-  const [text, setText] = useState('');
   const [flag, setFlag] = useState(true);
-  const [tries,setTries] = useState(-1);
-  const [guessTries,setGuessTries] = useState(-1);
+  const [tries,setTries] = useState([]);
+  const [guessTries,setGuessTries] = useState([]);
   const [guessFlag, setGuessFlag] = useState(true);
   const [guesses, setGuesses] = useState([]);
   const [movieGuesses, setMovieGuesses] = useState([]);
@@ -41,23 +40,23 @@ function App() {
 
   function handleInputChange(event) {
     const value  = event.target.value.trim();
+    event.target.value = '';
     if (value.length == 1 && value != '') {
-      setText(value.toUpperCase());      
+      console.log(value);
       const movieNameJoined = movieName
       .map((inner) => inner.join(''))
       .join('');
-      const flag = movieNameJoined.includes(text);
+      const flag = movieNameJoined.includes(value.toUpperCase());
       if(flag){        
-        if(!guesses.includes(text)){          
-          const updatedGuesses = [...guesses,text];
+        if(!guesses.includes(value.toUpperCase())){          
+          const updatedGuesses = [...guesses,value.toUpperCase()];
           setGuesses(updatedGuesses);
         }        
       }
       else{
-        const newTries = tries + 1;
+        const newTries = [...tries, value.toUpperCase()];
         setTries(newTries);
       }
-      console.log(flag);
       setFlag(flag);  
     }
   }
@@ -66,7 +65,7 @@ function App() {
     <div className="App">
       <Guess flag={guessFlag} tries={guessTries}/>
       <Movie movieName={movieName} guesses={movieGuesses}/>
-      <TextInput onInputChange={handleInputChange}/>
+      <TextInput onKeyPress={handleInputChange}/>
     </div>
   );
 }
