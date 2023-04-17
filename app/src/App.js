@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import ButtonComp from './ButtonComp';
 import Guess from './Guess';
 import Movie from './Movie';
 import TextInput from './TextInput';
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <div className="App">
+      <ButtonComp setMovieGuesses = {setMovieGuesses} setTries = {setTries} setGuessTries = {setGuessTries} setGuesses = {setGuesses} setMovieName = {setMovieName}/>
       <Guess flag={guessFlag} tries={guessTries}/>
       <Movie movieName={movieName} guesses={movieGuesses}/>
       <TextInput onKeyPress={handleInputChange}/>

@@ -3,10 +3,6 @@ import Box from './Box';
 
 function Guess({flag,tries}) {
 
-    const [incorrectGuessCount, setIncorrectGuessCount] = useState(0);
-    const [currentBoxIndex, setCurrentBoxIndex] = useState(0);
-  
-
     const boxes = [
         { id: 1, letter: 'B' },
         { id: 2, letter: 'O' },
