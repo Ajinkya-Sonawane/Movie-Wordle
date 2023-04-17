@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Box from './Box';
 
-function Guess({flag,tries}) {
+function Guess({tries}) {
 
     const boxes = [
         { id: 1, letter: 'B' },

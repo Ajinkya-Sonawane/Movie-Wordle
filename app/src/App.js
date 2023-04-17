@@ -20,20 +20,14 @@ function App() {
     fetchData();
   }, []);
 
-  const [flag, setFlag] = useState(true);
   const [tries,setTries] = useState([]);
   const [guessTries,setGuessTries] = useState([]);
-  const [guessFlag, setGuessFlag] = useState(true);
   const [guesses, setGuesses] = useState([]);
   const [movieGuesses, setMovieGuesses] = useState([]);
 
   useEffect(()=>{
     setMovieGuesses(guesses);
   },[guesses]);
-
-  useEffect(()=>{
-    setGuessFlag(flag);
-  },[flag]);
 
   useEffect(()=>{
     setGuessTries(tries);
@@ -58,14 +52,13 @@ function App() {
         const newTries = [...tries, value.toUpperCase()];
         setTries(newTries);
       }
-      setFlag(flag);  
     }
   }
 
   return (
     <div className="App">
       <ButtonComp setMovieGuesses = {setMovieGuesses} setTries = {setTries} setGuessTries = {setGuessTries} setGuesses = {setGuesses} setMovieName = {setMovieName}/>
-      <Guess flag={guessFlag} tries={guessTries}/>
+      <Guess tries={guessTries}/>
       <Movie movieName={movieName} guesses={movieGuesses}/>
       <TextInput onKeyPress={handleInputChange}/>
     </div>
