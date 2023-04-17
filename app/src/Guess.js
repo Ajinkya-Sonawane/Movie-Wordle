@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Box from './Box';
 
-function Guess({flag}) {
+function Guess({flag,tries}) {
 
     const [incorrectGuessCount, setIncorrectGuessCount] = useState(0);
     const [currentBoxIndex, setCurrentBoxIndex] = useState(0);
@@ -19,24 +19,14 @@ function Guess({flag}) {
         { id: 9, letter: 'D' },
     ];
 
-    useEffect(() => {        
-        if (flag && currentBoxIndex < boxes.length) { 
-          const updatedBoxes = [...boxes];
-          for (let i = 0; i <= currentBoxIndex; i++) {   
-              updatedBoxes[i].className = 'box GuessBoxFail';            
-          }
-          setIncorrectGuessCount(incorrectGuessCount + 1);
-          setCurrentBoxIndex(currentBoxIndex + 1);
-        }
-      }, [flag, currentBoxIndex, boxes, incorrectGuessCount]);
-    
+  const renderedGuess = boxes.map((box, index) => {
+          return <Box key={box.id} letter={box.letter} id={ "guess" + box.id} className={index > tries?"GuessBoxInitial":"GuessBoxFail"}/>
+  });
 
   return (
     <div>    
         {
-            boxes.map((box) => (
-                <Box key={box.id} letter={box.letter} id={ "guess" + box.id} className={"GuessBoxInitial"}/>
-            ))
+           renderedGuess
         }
     </div>
   );
