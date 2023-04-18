@@ -10,7 +10,8 @@ function Movie(props) {
             return <Box key={`${outerIndex}-${innerIndex}`} 
                 letter={guesses.includes(item) ? item : ''} 
                 id={`${outerIndex+1}-${innerIndex+1}`} 
-                className={"MovieBoxInitial"}/>;
+                boxClassName={guesses.includes(item) ? "MovieBoxSuccess" : "MovieBoxInitial"}
+                boxLetterClassName={"MovieBox-letter"}/>;
         });
         return <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}} key={outerIndex}>{renderedInnerList}</div>;
     });

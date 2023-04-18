@@ -3,24 +3,17 @@ import Box from './Box';
 
 function Guess({tries}) {
 
-    const boxes = [
-        { id: 1, letter: 'B' },
-        { id: 2, letter: 'O' },
-        { id: 3, letter: 'L' },
-        { id: 4, letter: 'L' },
-        { id: 5, letter: 'Y' },
-        { id: 6, letter: 'W' },
-        { id: 7, letter: 'O' },
-        { id: 8, letter: 'O' },
-        { id: 9, letter: 'D' },
-    ];
-
-  const renderedGuess = boxes.map((box, index) => {
-          return <Box key={box.id} letter={box.id > tries.length? box.letter:tries[index]} id={ "guess" + box.id} className={box.id > tries.length ?"GuessBoxInitial":"GuessBoxFail"}/>
-  });
+  const renderedGuess = Array(10).fill(null).map((_, index) => (
+    <Box key={index} 
+    letter={index+1 > tries.length? index+1:tries[index]} 
+    id={ "guess" + index+1} 
+    boxClassName={index+1 > tries.length ?"GuessBoxInitial":"GuessBoxFail"}
+    boxLetterClassName={index+1 > tries.length ?"":"GuessBoxFail-letter"}
+    />
+  ));
 
   return (
-    <div  className="AppComponents">    
+    <div  className="AppComponents">
         {
            renderedGuess
         }

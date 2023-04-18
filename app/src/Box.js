@@ -1,11 +1,11 @@
 import React from 'react';
 import './Box.css'
-function Box({ letter, id, className}) {
+function Box({ letter, id, boxClassName,boxLetterClassName}) {
 
     return (
-      <div className={`box ${className}`} id={id}
+      <div className={`box ${boxClassName}`} id={id}
         style={{ alignItems: 'center', justifyContent: 'center' }}>
-        {letter}
+        <span className={boxLetterClassName}>{letter}</span>
       </div>
     );
   }

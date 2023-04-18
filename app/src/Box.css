@@ -3,10 +3,18 @@
     width: 50px;
     height: 50px;
     display: inline-flex;
-    margin: 5px
-
+    margin: 5px;
+    transition: background-color 0.5s;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center center;
 }
 
+.MovieBoxSuccess {
+    background-color: #0f0;    
+    transform: rotateX(180deg);
+}
+  
 .GuessBoxInitial, .MovieBoxInitial {
     background-color: white;
     color: black;
@@ -15,4 +23,14 @@
 .GuessBoxFail {
     background-color: red;
     color: white;
+    transform: rotateX(180deg);
 }
+
+.MovieBox-letter {
+    transform: rotateX(180deg);
+}
+
+.GuessBoxFail-letter {
+    transform: rotateX(180deg);
+}
+
